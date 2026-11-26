@@ -48,7 +48,7 @@ export default function Dashboard() {
   }, []);
 
   const today = new Date().toISOString().split("T")[0];
-  const reservationsToday = resaCtx.reservationList.filter((r) =>
+  const reservationsToday = (resaCtx.reservationList || []).filter((r) =>
     r.startDate.startsWith(today)
   ).length;
 
