@@ -1,7 +1,7 @@
 import { HiUser, HiMail } from "react-icons/hi";
 
 export interface User {
-    _id: string;
+    id: string;
     firstname: string;
     lastname: string;
     email: string;

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export type Reservation = {
-    _id: string,
+    id: string,
     userId: string,
     roomId: string,
     startDate: string,

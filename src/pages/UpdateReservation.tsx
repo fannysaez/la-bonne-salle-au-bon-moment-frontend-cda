@@ -64,7 +64,7 @@ function UpdateReservation() {
     event.preventDefault();
     if (!reservation) return;
 
-    if (reservation.userId !== user?._id && user?.roleId !== "1") {
+    if (reservation.userId !== user?.id && user?.roleId !== "1") {
       navigate(`/dashboard/${user?.roleLabel}`);
       return;
     }
@@ -106,7 +106,7 @@ function UpdateReservation() {
               className="input-field"
             >
               {roomList.map((room) => (
-                <option key={room._id} value={room._id}>
+                <option key={room.id} value={room.id}>
                   {room.name} — capacité : {room.capacity}
                 </option>
               ))}

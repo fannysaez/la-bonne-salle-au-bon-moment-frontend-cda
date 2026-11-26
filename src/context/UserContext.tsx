@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export type User = {
-    _id: string,
+    id: string,
     firstname: string,
     lastname: string,
     email: string,

@@ -100,7 +100,7 @@ function RoomList() {
               </thead>
               <tbody className="divide-y divide-navy-border">
                 {paginated.map((room) => (
-                  <tr key={room._id} className="hover:bg-navy-border/30 transition-colors">
+                  <tr key={room.id} className="hover:bg-navy-border/30 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-lg bg-lime/10 flex items-center justify-center shrink-0">
@@ -117,14 +117,14 @@ function RoomList() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2 justify-end">
                         <button
-                          onClick={() => navigate(`/NewRoom?id=${room._id}`)}
+                          onClick={() => navigate(`/NewRoom?id=${room.id}`)}
                           className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border border-navy-border text-gray-300 hover:text-white hover:border-lime/50 transition-colors cursor-pointer"
                         >
                           <HiPencil className="text-base" />
                           <span className="hidden md:inline">Éditer</span>
                         </button>
                         <button
-                          onClick={() => deleteRoom(room._id)}
+                          onClick={() => deleteRoom(room.id)}
                           className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border border-red-800/60 text-red-400 hover:bg-red-900/20 hover:border-red-600 transition-colors cursor-pointer"
                         >
                           <HiTrash className="text-base" />

@@ -50,7 +50,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   return (
     <ReservationContext.Provider
       value={{
-        _id: reservation?._id ?? "",
+        id: reservation?.id ?? "",
         userId: reservation?.userId ?? "",
         roomId: reservation?.roomId ?? "",
         startDate: reservation?.startDate ?? "",

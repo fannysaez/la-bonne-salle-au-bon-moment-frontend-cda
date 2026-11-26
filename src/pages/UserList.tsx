@@ -205,7 +205,7 @@ function UserList() {
             <div className="user-cards-mobile">
               {paginated.map((u) => {
                 const anyUser = u as never as {
-                  _id: string; roleLabel: string; email?: string;
+                  id: string; roleLabel: string; email?: string;
                   firstname?: string; lastname?: string; username?: string;
                 };
                 const initials = getInitials(anyUser);
@@ -215,7 +215,7 @@ function UserList() {
                 const roleClass = ROLE_COLORS[role] ?? "bg-gray-700 text-gray-300";
                 const roleIcon = ROLE_ICONS[role] ?? <HiUsers />;
                 return (
-                  <div key={anyUser._id} className="card p-4 flex items-center gap-3">
+                  <div key={anyUser.id} className="card p-4 flex items-center gap-3">
                     <div className={"w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold shrink-0 " + avatarClass}>
                       {initials}
                     </div>
@@ -284,7 +284,7 @@ function UserList() {
               <tbody className="divide-y divide-navy-border">
                 {paginated.map((u) => {
                   const anyUser = u as never as {
-                    _id: string;
+                    id: string;
                     roleLabel: string;
                     email?: string;
                     firstname?: string;
@@ -300,7 +300,7 @@ function UserList() {
 
                   return (
                     <tr
-                      key={anyUser._id}
+                      key={anyUser.id}
                       className="hover:bg-navy-border/30 transition-colors"
                     >
                       <td className="px-6 py-4">

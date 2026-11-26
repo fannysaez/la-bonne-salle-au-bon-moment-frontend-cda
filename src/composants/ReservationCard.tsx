@@ -78,13 +78,13 @@ function ReservationCard({ reservation, onChange }: ReservationCardProps) {
       <div className="flex items-center gap-3 shrink-0">
         {badge}
         <button
-          onClick={() => navigate(`/reservations/${reservation._id}`)}
+          onClick={() => navigate(`/reservations/${reservation.id}`)}
           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-lime/10 text-lime border border-lime/30 hover:bg-lime/20 transition-all text-sm font-medium"
         >
           <HiPencil /> Modifier
         </button>
         <button
-          onClick={() => { deleteReservation(reservation._id); onChange(); }}
+          onClick={() => { deleteReservation(reservation.id); onChange(); }}
           className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20 transition-all text-sm font-medium"
         >
           <HiTrash /> Supprimer

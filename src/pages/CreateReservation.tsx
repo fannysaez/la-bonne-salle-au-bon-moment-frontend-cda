@@ -36,7 +36,7 @@ function CreateReservation() {
   const [searchDate, setSearchDate] = useState(today);
   const [searchStart, setSearchStart] = useState("09:00");
   const [searchEnd, setSearchEnd] = useState("11:00");
-  const [selectedUserId, setSelectedUserId] = useState(user?._id ?? "");
+  const [selectedUserId, setSelectedUserId] = useState(user?.id ?? "");
   const [searched, setSearched] = useState(false);
   const [availableRooms, setAvailableRooms] = useState<Room[]>([]);
   const [startDate, setStartDate] = useState("");
@@ -47,7 +47,7 @@ function CreateReservation() {
   const ROOM_PAGE_SIZE = 5;
 
   useEffect(() => {
-    if (user) setSelectedUserId(user._id);
+    if (user) setSelectedUserId(user.id);
   }, [user]);
 
   // Navbar
@@ -91,7 +91,7 @@ function CreateReservation() {
 
     const available = roomList.filter((room) => {
       return !reservationList.some((resa) => {
-        if (resa.roomId !== room._id) return false;
+        if (resa.roomId !== room.id) return false;
         return !(end <= new Date(resa.startDate) || start >= new Date(resa.endDate));
       });
     });
@@ -102,7 +102,7 @@ function CreateReservation() {
   }
 
   function handleReserve(roomId: string) {
-    const userId = selectedUserId || user?._id || "";
+    const userId = selectedUserId || user?.id || "";
     if (!userId) return;
     postReservation({ roomId, userId, startDate, endDate } as Reservation);
     setSuccess(true);
@@ -164,7 +164,7 @@ function CreateReservation() {
                   onChange={(e) => setSelectedUserId(e.target.value)}
                 >
                   {userList.map((u: User) => (
-                    <option key={u._id} value={u._id}>
+                    <option key={u.id} value={u.id}>
                       {u.firstname} {u.lastname}
                     </option>
                   ))}
@@ -208,7 +208,7 @@ function CreateReservation() {
             ) : (
               <div className="flex flex-col gap-3">
                 {availableRooms.slice((roomPage - 1) * ROOM_PAGE_SIZE, roomPage * ROOM_PAGE_SIZE).map((room) => (
-                  <div key={room._id} className="card p-5 flex items-center gap-4 border-l-4 border-l-lime">
+                  <div key={room.id} className="card p-5 flex items-center gap-4 border-l-4 border-l-lime">
                     <div className="flex-1">
                       <h3 className="text-white font-semibold">{room.name}</h3>
                       <p className="text-gray-400 text-sm">{room.capacity} places</p>
@@ -218,7 +218,7 @@ function CreateReservation() {
                       Disponible
                     </span>
                     <button
-                      onClick={() => handleReserve(room._id)}
+                      onClick={() => handleReserve(room.id)}
                       className="btn-lime px-5 py-2 text-sm"
                     >
                       Réserver

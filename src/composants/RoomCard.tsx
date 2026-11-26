@@ -1,7 +1,7 @@
 import { HiOfficeBuilding, HiUsers } from "react-icons/hi";
 
 export interface Salle {
-    _id: string;
+    id: string;
     name: string;
     capacity: number;
 }

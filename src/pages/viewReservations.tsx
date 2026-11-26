@@ -82,7 +82,7 @@ function ViewReservation() {
   };
 
   const getRoomName = (roomId: string) => {
-    const room = roomList.find((r) => r._id === roomId);
+    const room = roomList.find((r) => r.id === roomId);
     return room?.name ?? "Salle";
   };
 
@@ -168,7 +168,7 @@ function ViewReservation() {
                       <div className="space-y-1">
                         {res.map((r) => (
                           <div
-                            key={r._id}
+                            key={r.id}
                             title={`${getRoomName(r.roomId)} ${formatTime(r.startDate)}-${formatTime(r.endDate)}`}
                             className="bg-lime text-navy text-xs font-semibold px-1 py-0.5 rounded truncate cursor-default"
                           >

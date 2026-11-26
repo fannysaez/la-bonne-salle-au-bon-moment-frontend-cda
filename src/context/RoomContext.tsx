@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export type Room = {
-    _id: string,
+    id: string,
     name: string,
     capacity: number,
 }
