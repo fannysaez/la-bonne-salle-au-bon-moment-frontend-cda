@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import React, { useState, useContext } from "react";
 import type { Reservation } from "./ReservationContext";
 import { ReservationContext } from "./ReservationContext";
@@ -6,7 +7,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [reservationList, setReservationList] = useState<Reservation[]>([]);
 
   const getReservation = async (_id: string) => {
-    const response = await fetch(`http://localhost:3000/api/reservations/${_id}`, {
+    const response = await fetch(`${API_URL}/api/reservations/${_id}`, {
       credentials: "include",
     });
     const data = await response.json();
@@ -14,7 +15,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   const postReservation = async (reservation: Reservation) => {
-    await fetch("http://localhost:3000/api/reservations", {
+    await fetch(`${API_URL}/api/reservations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -23,7 +24,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   const putReservation = async (_id: string, reservation: Reservation) => {
-    await fetch(`http://localhost:3000/api/reservations/${_id}`, {
+    await fetch(`${API_URL}/api/reservations/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -32,14 +33,14 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   const deleteReservation = async (_id: string) => {
-    await fetch(`http://localhost:3000/api/reservations/${_id}`, {
+    await fetch(`${API_URL}/api/reservations/${_id}`, {
       method: "DELETE",
       credentials: "include",
     });
   };
 
   const getReservationList = async () => {
-    const response = await fetch("http://localhost:3000/api/reservations", {
+    const response = await fetch(`${API_URL}/api/reservations`, {
       credentials: "include",
     });
     const data = await response.json();

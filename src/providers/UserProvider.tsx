@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useState } from "react";
 import { UserContext, type User } from "../context/UserContext";
 
@@ -15,7 +16,7 @@ function UserProvider({ children }: { children?: React.ReactNode }) {
 
     async function getUserList() {
         try {
-            const res = await fetch("http://localhost:3000/api/users", {
+            const res = await fetch(`${API_URL}/api/users`, {
                 credentials: 'include',
             });
             if (!res.ok) {

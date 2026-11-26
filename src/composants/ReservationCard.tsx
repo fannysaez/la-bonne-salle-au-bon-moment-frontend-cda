@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import type { Reservation } from "../context/ReservationContext";
@@ -52,7 +53,7 @@ function ReservationCard({ reservation, onChange }: ReservationCardProps) {
 
   useEffect(() => {
     const fetchSalle = async () => {
-      const response = await fetch(`http://localhost:3000/api/rooms/${reservation.roomId}`, {
+      const response = await fetch(`${API_URL}/api/rooms/${reservation.roomId}`, {
         credentials: "include",
       });
       const data = await response.json();

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useState } from "react";
 import { RoomContext } from "../context/RoomContext";
 import type { Room } from "../context/RoomContext";
@@ -6,7 +7,7 @@ function RoomProvider({ children }: { children?: React.ReactNode }) {
 
     const [room, setRoom] = useState<Room>({} as Room);
     const [roomList, setRoomList] = useState<Room[]>([]);
-    const url = 'http://localhost:3000/api/rooms';
+    const url = `${API_URL}/api/rooms`;
 
     async function getRoom(id: string) {
         const res = await fetch(url + "/" + id, { credentials: 'include' });

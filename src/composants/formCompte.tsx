@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -65,7 +66,7 @@ export default function FormCompte() {
   if (!context) return null;
 
 const onSubmit = async (data: FormData) => {
-  const res = await fetch("http://localhost:3000/api/users", {
+  const res = await fetch(`${API_URL}/api/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

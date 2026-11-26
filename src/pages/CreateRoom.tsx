@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -19,7 +20,7 @@ function CreateRoom() {
     }
     setError("");
 
-    await fetch("http://localhost:3000/api/rooms", {
+    await fetch(`${API_URL}/api/rooms`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

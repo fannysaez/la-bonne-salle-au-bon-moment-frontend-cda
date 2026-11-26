@@ -1,13 +1,10 @@
+import { API_URL } from "../config/api";
 import { useForm } from "react-hook-form";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { UserContext } from "../context/UserContext";
 import {
   HiArrowLeft,
-  HiCalendar,
-  HiBookOpen,
-  HiCog,
-  HiAcademicCap,
 } from "react-icons/hi";
 import Navbar from "../composants/NavBar";
 
@@ -32,11 +29,10 @@ function NewRoom() {
   const [success, setSuccess] = useState(false);
 
   if (!context) return null;
-  const { user } = context;
 
   useEffect(() => {
     if (!isEdit) return;
-    fetch(`http://localhost:3000/api/rooms/${id}`, {
+    fetch(`${API_URL}/api/rooms/${id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -49,8 +45,8 @@ function NewRoom() {
   async function onSubmit(data: RoomFormData) {
     try {
       const url = isEdit
-        ? `http://localhost:3000/api/rooms/${id}`
-        : "http://localhost:3000/api/rooms";
+        ? `${API_URL}/api/rooms/${id}`
+        : `${API_URL}/api/rooms`;
       const method = isEdit ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -62,9 +58,7 @@ function NewRoom() {
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
 
-      const result = await response.json();
-      console.log(result);
-
+await response.json();
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

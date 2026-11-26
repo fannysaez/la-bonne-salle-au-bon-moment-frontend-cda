@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api";
 import { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import type { ChangeEvent } from "react";
@@ -19,7 +20,7 @@ function UpdateReservation() {
 
   useEffect(() => {
     const fetchReservation = async () => {
-      const response = await fetch(`http://localhost:3000/api/reservations/${id}`, {
+      const response = await fetch(`${API_URL}/api/reservations/${id}`, {
         credentials: "include",
       });
       const data = await response.json();
@@ -49,7 +50,7 @@ function UpdateReservation() {
   }
 
   async function putReservation(_id: string, donnees: Partial<Reservation>) {
-    const response = await fetch(`http://localhost:3000/api/reservations/${_id}`, {
+    const response = await fetch(`${API_URL}/api/reservations/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
