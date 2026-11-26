@@ -44,7 +44,7 @@ export const ReservationProvider: React.FC<{ children: React.ReactNode }> = ({ c
       credentials: "include",
     });
     const data = await response.json();
-    setReservationList(data);
+    setReservationList(Array.isArray(data) ? data : []);
   };
 
   return (
